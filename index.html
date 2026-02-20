@@ -1,73 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menaka J | Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#ffffff;
+    color:#222;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* Scroll Space */
+body::after{
+    content:"";
+    display:block;
+    height:250vh;
+}
+
+/* Canvas Background */
+#animationCanvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    opacity:0.08;
+    pointer-events:none;
+}
+
+/* Content */
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+header h1{
+    font-size:42px;
+    font-weight:bold;
+}
+
+header p{
+    margin-top:10px;
+    color:#444;
+}
+
+section{
+    margin-bottom:50px;
+    background:rgba(255,255,255,0.95);
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+section h2{
+    margin-bottom:15px;
+    color:#0a4f9c;
+    border-bottom:2px solid #0a4f9c;
+    display:inline-block;
+    padding-bottom:5px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    font-size:14px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="animationCanvas"></canvas>
+
+<div class="container">
+
+<header>
+<h1>Menaka J</h1>
+<p>
+📧 menaka7583@gmail.com |
+📞 +91 8807657998 |
+📍 Tirunelveli, Tamil Nadu
+</p>
+</header>
+
+<section>
+<h2>Career Objective</h2>
+<p>
+Enthusiastic Electronics and Communication Engineering student eager to apply technical knowledge,
+gain industry exposure, and contribute effectively to innovative projects in the field of electronics and communication.
+</p>
+</section>
+
+<section>
+<h2>Education</h2>
+<p><strong>BE - Electronics and Communication Engineering</strong></p>
+<p>Government College of Engineering, Bodinayakkanur (2023 - 2027)</p>
+<br>
+<p><strong>Senior Secondary (XII) - Science</strong></p>
+<p>Government Higher Secondary School, Burkitmanagaram (2023)</p>
+</section>
+
+<section>
+<h2>Work Experience</h2>
+<p><strong>Telecommunication Intern</strong></p>
+<p>BSNL, Thoothukudi — June 2025</p>
+<ul>
+<li>Worked on GSM, broadband and optical fiber technologies</li>
+<li>Observed BTS and signal routing systems</li>
+<li>Understood network troubleshooting processes</li>
+</ul>
+</section>
+
+<section>
+<h2>Projects</h2>
+<p><strong>Voice-Controlled Home Automation using Bluetooth</strong></p>
+<p>Integrated Arduino & Bluetooth with voice recognition for IoT based control.</p>
+</section>
+
+</div>
+
+<footer>
+© 2026 Menaka J | ECE Portfolio
+</footer>
+
 <script>
 const canvas = document.getElementById("animationCanvas");
-const context = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 
 const frameCount = 240;
 const images = [];
-let loadedImages = 0;
 
-function resizeCanvas(){
+/* Resize Canvas */
+function resize(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+resize();
+window.addEventListener("resize", resize);
 
 /* Load Images */
 for(let i=1; i<=frameCount; i++){
     const img = new Image();
-    img.src = `frames/ezgif-frame-${String(i).padStart(3,'0')}.jpg`;
-
-    img.onload = () => {
-        loadedImages++;
-        if(loadedImages === 1){
-            renderFrame(0);
-        }
-    };
-
-    img.onerror = () => {
-        console.log("Image not found:", img.src);
-    };
-
+    img.src = "frame/ezgif-frame-" + String(i).padStart(3,"0") + ".jpg";
     images.push(img);
 }
 
-function renderFrame(index){
-    if(images[index] && images[index].complete){
-        context.clearRect(0,0,canvas.width,canvas.height);
+/* Render Frame */
+function render(index){
+    if(!images[index]) return;
 
-        const img = images[index];
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        const scale = Math.max(
-            canvas.width / img.width,
-            canvas.height / img.height
-        );
+    const img = images[index];
 
-        const x = (canvas.width / 2) - (img.width / 2) * scale;
-        const y = (canvas.height / 2) - (img.height / 2) * scale;
+    if(!img.complete) return;
 
-        context.drawImage(
-            img,
-            x,
-            y,
-            img.width * scale,
-            img.height * scale
-        );
-    }
-}
-
-window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-    if(scrollHeight <= 0) return;
-
-    const scrollFraction = scrollTop / scrollHeight;
-    const frameIndex = Math.min(
-        frameCount - 1,
-        Math.floor(scrollFraction * (frameCount - 1))
+    const scale = Math.max(
+        canvas.width / img.width,
+        canvas.height / img.height
     );
 
-    renderFrame(frameIndex);
+    const x = (canvas.width - img.width * scale) / 2;
+    const y = (canvas.height - img.height * scale) / 2;
+
+    ctx.drawImage(
+        img,
+        x,
+        y,
+        img.width * scale,
+        img.height * scale
+    );
+}
+
+/* First Frame */
+images[0].onload = function(){
+    render(0);
+};
+
+/* Scroll Animation */
+window.addEventListener("scroll", function(){
+    const scrollTop = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+
+    if(maxScroll <= 0) return;
+
+    const scrollFraction = scrollTop / maxScroll;
+    const frameIndex = Math.floor(scrollFraction * (frameCount - 1));
+
+    render(frameIndex);
 });
 </script>
+
+</body>
+</html>
