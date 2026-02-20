@@ -6,207 +6,195 @@
 <title>Menaka J | Portfolio</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
 
-    body {
-        background: #ffffff;
-        color: #222;
-        line-height: 1.6;
-        position: relative;
-        overflow-x: hidden;
-    }
+body{
+    background:#ffffff;
+    color:#222;
+    line-height:1.6;
+    overflow-x:hidden;
+}
 
-    /* Scroll Animation Canvas Background */
-    #animationCanvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 0.07; /* Watermark Transparency */
-        pointer-events: none;
-    }
+/* SCROLL HEIGHT FIX */
+body::after{
+    content:"";
+    display:block;
+    height:200vh;   /* Forces scroll */
+}
 
-    /* Main Content Container */
-    .container {
-        max-width: 1000px;
-        margin: auto;
-        padding: 60px 20px;
-    }
+/* Background Canvas */
+#animationCanvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    opacity:0.08;  /* Watermark effect */
+    pointer-events:none;
+}
 
-    header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
+/* Content */
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:60px 20px;
+}
 
-    header h1 {
-        font-size: 42px;
-        font-weight: bold;
-        color: #111;
-    }
+header{
+    text-align:center;
+    margin-bottom:40px;
+}
 
-    header p {
-        margin-top: 10px;
-        font-size: 16px;
-        color: #444;
-    }
+header h1{
+    font-size:42px;
+    font-weight:bold;
+}
 
-    section {
-        margin-bottom: 50px;
-        background: rgba(255, 255, 255, 0.95);
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    }
+header p{
+    margin-top:10px;
+    color:#444;
+}
 
-    section h2 {
-        margin-bottom: 15px;
-        color: #0a4f9c;
-        border-bottom: 2px solid #0a4f9c;
-        display: inline-block;
-        padding-bottom: 5px;
-    }
+section{
+    margin-bottom:50px;
+    background:rgba(255,255,255,0.95);
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
 
-    ul {
-        padding-left: 20px;
-    }
+section h2{
+    margin-bottom:15px;
+    color:#0a4f9c;
+    border-bottom:2px solid #0a4f9c;
+    display:inline-block;
+    padding-bottom:5px;
+}
 
-    li {
-        margin-bottom: 8px;
-    }
+ul{
+    padding-left:20px;
+}
 
-    .project-title {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    footer {
-        text-align: center;
-        padding: 30px;
-        font-size: 14px;
-        color: #555;
-    }
-
+footer{
+    text-align:center;
+    padding:30px;
+    font-size:14px;
+    color:#555;
+}
 </style>
 </head>
+
 <body>
 
 <canvas id="animationCanvas"></canvas>
 
 <div class="container">
 
-    <header>
-        <h1>Menaka J</h1>
-        <p>
-            📧 menaka7583@gmail.com |
-            📞 +91 8807657998 |
-            📍 Tirunelveli, Tamil Nadu
-        </p>
-    </header>
+<header>
+<h1>Menaka J</h1>
+<p>
+📧 menaka7583@gmail.com |
+📞 +91 8807657998 |
+📍 Tirunelveli, Tamil Nadu
+</p>
+</header>
 
-    <section>
-        <h2>Career Objective</h2>
-        <p>
-            Enthusiastic Electronics and Communication Engineering student eager to apply technical knowledge,
-            gain industry exposure, and contribute effectively to innovative projects in the field of
-            electronics and communication.
-        </p>
-    </section>
+<section>
+<h2>Career Objective</h2>
+<p>
+Enthusiastic Electronics and Communication Engineering student eager to apply technical knowledge,
+gain industry exposure, and contribute effectively to innovative projects in the field of electronics and communication.
+</p>
+</section>
 
-    <section>
-        <h2>Education</h2>
-        <p><strong>BE - Electronics and Communication Engineering</strong></p>
-        <p>Government College of Engineering, Bodinayakkanur (2023 - 2027)</p>
-        <br>
-        <p><strong>Senior Secondary (XII) - Science</strong></p>
-        <p>Government Higher Secondary School, Burkitmanagaram (Tamil Nadu State Board, 2023)</p>
-    </section>
+<section>
+<h2>Education</h2>
+<p><strong>BE - Electronics and Communication Engineering</strong></p>
+<p>Government College of Engineering, Bodinayakkanur (2023 - 2027)</p>
+<br>
+<p><strong>Senior Secondary (XII) - Science</strong></p>
+<p>Government Higher Secondary School, Burkitmanagaram (2023)</p>
+</section>
 
-    <section>
-        <h2>Work Experience</h2>
-        <p><strong>Telecommunication Intern</strong></p>
-        <p>BSNL, Thoothukudi — June 2025</p>
-        <br>
-        <ul>
-            <li>Learnt core concepts of telecommunication networks including GSM, broadband, and optical fiber technologies.</li>
-            <li>Observed working of telephone exchanges, BTS, and signal routing systems.</li>
-            <li>Analyzed real-time network setup, maintenance, and troubleshooting processes.</li>
-            <li>Gained hands-on exposure to hardware units and communication protocols used in public sector telecom operations.</li>
-        </ul>
-    </section>
+<section>
+<h2>Work Experience</h2>
+<p><strong>Telecommunication Intern</strong></p>
+<p>BSNL, Thoothukudi — June 2025</p>
+<ul>
+<li>Worked on GSM, broadband and optical fiber technologies</li>
+<li>Observed BTS and signal routing systems</li>
+<li>Understood network troubleshooting processes</li>
+</ul>
+</section>
 
-    <section>
-        <h2>Projects</h2>
-        <div class="project">
-            <p class="project-title">Voice-Controlled Home Automation using Bluetooth — May 2025</p>
-            <p>
-                Developed a Bluetooth-based home automation system that allows users to control home appliances
-                using voice commands. Integrated Arduino and Bluetooth modules with voice recognition software,
-                enabling seamless mobile-based control.
-            </p>
-            <br>
-            <p>
-                Focus Areas: IoT, Embedded Systems, Connectivity Solutions
-            </p>
-        </div>
-    </section>
+<section>
+<h2>Projects</h2>
+<p><strong>Voice-Controlled Home Automation using Bluetooth</strong></p>
+<p>Integrated Arduino & Bluetooth with voice recognition for IoT based control.</p>
+</section>
 
 </div>
 
 <footer>
-    © 2026 Menaka J | Electronics & Communication Engineering Portfolio
+© 2026 Menaka J | ECE Portfolio
 </footer>
 
 <script>
-    const canvas = document.getElementById("animationCanvas");
-    const context = canvas.getContext("2d");
+const canvas = document.getElementById("animationCanvas");
+const context = canvas.getContext("2d");
 
-    const frameCount = 240;
-    const images = [];
-    const imageSeq = (frame) => `frames/ezgif-frame-${String(frame).padStart(3, '0')}.jpg`;
+const frameCount = 240;
+const images = [];
 
+/* Resize Canvas */
+function resizeCanvas(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
-    // Preload Images
-    for (let i = 1; i <= frameCount; i++) {
-        const img = new Image();
-        img.src = imageSeq(i);
-        images.push(img);
+/* Load Images */
+for(let i=1; i<=frameCount; i++){
+    const img = new Image();
+    img.src = `frames/ezgif-frame-${String(i).padStart(3,'0')}.jpg`;
+    images.push(img);
+}
+
+/* Render Frame */
+function renderFrame(index){
+    if(images[index]){
+        context.clearRect(0,0,canvas.width,canvas.height);
+        context.drawImage(images[index],0,0,canvas.width,canvas.height);
     }
+}
 
-    const render = (index) => {
-        if (images[index]) {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.drawImage(images[index], 0, 0, canvas.width, canvas.height);
-        }
-    };
+/* Scroll Animation */
+window.addEventListener("scroll", ()=>{
+    const scrollTop = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
 
-    window.addEventListener('scroll', () => {
-        const scrollTop = document.documentElement.scrollTop;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollFraction = scrollTop / maxScroll;
-        const frameIndex = Math.min(
-            frameCount - 1,
-            Math.floor(scrollFraction * frameCount)
-        );
+    if(maxScroll <= 0) return;
 
-        render(frameIndex);
-    });
+    const scrollFraction = scrollTop / maxScroll;
+    const frameIndex = Math.min(
+        frameCount - 1,
+        Math.floor(scrollFraction * frameCount)
+    );
 
-    images[0].onload = () => render(0);
+    renderFrame(frameIndex);
+});
 
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-
+/* Show First Frame */
+images[0].onload = ()=>{
+    renderFrame(0);
+};
 </script>
 
 </body>
