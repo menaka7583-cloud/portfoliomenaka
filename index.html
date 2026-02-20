@@ -15,8 +15,8 @@
 
 body{
     background:#ffffff;
-    color:#222;
-    line-height:1.6;
+    color:#111;
+    line-height:1.7;
     overflow-x:hidden;
 }
 
@@ -27,7 +27,7 @@ body::after{
     height:250vh;
 }
 
-/* Canvas Background */
+/* Background Animation */
 #animationCanvas{
     position:fixed;
     top:0;
@@ -35,57 +35,60 @@ body::after{
     width:100%;
     height:100%;
     z-index:-1;
-    opacity:0.08;
+    opacity:0.28;   /* Stronger visibility */
     pointer-events:none;
 }
 
-/* Content */
+/* Layout */
 .container{
-    max-width:1000px;
+    max-width:900px;
     margin:auto;
-    padding:60px 20px;
+    padding:80px 20px;
 }
 
+/* Header */
 header{
     text-align:center;
-    margin-bottom:40px;
+    margin-bottom:80px;
 }
 
 header h1{
-    font-size:42px;
-    font-weight:bold;
+    font-size:48px;
+    font-weight:700;
+    margin-bottom:15px;
 }
 
 header p{
-    margin-top:10px;
-    color:#444;
+    font-size:16px;
 }
 
+/* Transparent Sections */
 section{
-    margin-bottom:50px;
-    background:rgba(255,255,255,0.95);
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom:80px;
+    padding:10px 0;
+    background:transparent;
 }
 
+/* Headings */
 section h2{
-    margin-bottom:15px;
+    font-size:24px;
+    margin-bottom:20px;
     color:#0a4f9c;
     border-bottom:2px solid #0a4f9c;
     display:inline-block;
     padding-bottom:5px;
 }
 
+/* Lists */
 ul{
     padding-left:20px;
 }
 
+/* Footer */
 footer{
     text-align:center;
-    padding:30px;
+    padding:40px;
     font-size:14px;
-    color:#555;
 }
 </style>
 </head>
@@ -99,9 +102,9 @@ footer{
 <header>
 <h1>Menaka J</h1>
 <p>
-📧 menaka7583@gmail.com |
-📞 +91 8807657998 |
-📍 Tirunelveli, Tamil Nadu
+menaka7583@gmail.com |
++91 8807657998 |
+Tirunelveli, Tamil Nadu
 </p>
 </header>
 
@@ -136,7 +139,10 @@ gain industry exposure, and contribute effectively to innovative projects in the
 <section>
 <h2>Projects</h2>
 <p><strong>Voice-Controlled Home Automation using Bluetooth</strong></p>
-<p>Integrated Arduino & Bluetooth with voice recognition for IoT based control.</p>
+<p>
+Integrated Arduino & Bluetooth with voice recognition for IoT based control.
+Focused on IoT, embedded systems and connectivity solutions.
+</p>
 </section>
 
 </div>
@@ -170,12 +176,11 @@ for(let i=1; i<=frameCount; i++){
 /* Render Frame */
 function render(index){
     if(!images[index]) return;
+    if(!images[index].complete) return;
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
     const img = images[index];
-
-    if(!img.complete) return;
 
     const scale = Math.max(
         canvas.width / img.width,
